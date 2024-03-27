@@ -221,12 +221,20 @@ for _ in order_list:
     item_quantity = order_list[i]["Quantity"]
 
     # 8. Calculate the number of spaces for formatted printing
-    num_item_name_spaces = 25 - len(order_list[i]["Item name"])
+    num_item_name_spaces = 25 - len(item_name)
+
+    # If a menue item is 100 or more than this will need to be updated to hanle more spaces.
+    if item_price >= 10:
+        num_item_price_spaces = 1
+    else:
+        num_item_price_spaces = 2
+
     # 9. Create space strings
     item_spaces = " " * num_item_name_spaces
+    price_spaces = " " * num_item_price_spaces
 
     # 10. Print the item name, price, and quantity
-    print(f"{item_name}{item_spaces} | {item_price}   | {item_quantity}")
+    print(f"{item_name}{item_spaces} |{price_spaces}${item_price:.2f} | {item_quantity}")
 
     # incroment i by 1 to go through all list items.
     i += 1
